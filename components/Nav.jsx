@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import {useState, useEffect} from 'react'
-import {signIn, signOut, useSessio, getProviders, useSession} from 'next-auth/react' 
+import {signIn, signOut, getProviders, useSession} from 'next-auth/react' 
 
 const Nav = () => {
     const {data: session } = useSession();
@@ -45,7 +45,7 @@ const Nav = () => {
                     Sign Out
                 </button>
                 <Link href='/profile'>
-                    <Image src='/assets/images/logo.svg'
+                    <Image src={session?.user.image}
                     width={37}
                     height={37}
                     className='rounded-full'
@@ -71,7 +71,7 @@ const Nav = () => {
             { session?.user ?
             (<div>
                 <Image 
-                src="/assets/images/logo.svg"
+                src={session?.user.image}
                 width={30}
                 height={30}
                 className='object-contain'
