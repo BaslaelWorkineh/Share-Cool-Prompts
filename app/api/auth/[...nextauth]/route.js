@@ -11,7 +11,6 @@ const handler = NextAuth({
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
-  callbacks: {
     async session({ session }) {
       const sessionUser = await User.findOne({ email: session.user.email });
 
@@ -39,6 +38,6 @@ const handler = NextAuth({
       }
     },
   },
-});
+);
 
 export { handler as GET, handler as POST };
