@@ -26,6 +26,7 @@ const handler = NextAuth({
         const userExists = await User.findOne({ email: profile.email });
 
         if (!userExists) {
+          console.log("user does not exist");
           await User.create({
             email: profile.email,
             username: profile.name.replace(" ", "").toLowerCase(),
@@ -37,7 +38,6 @@ const handler = NextAuth({
         return false;
       }
     },
-  },
-);
+});
 
 export { handler as GET, handler as POST };
